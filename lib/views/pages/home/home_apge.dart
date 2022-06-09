@@ -127,8 +127,8 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
             child: TextButton.icon(
-                label: const Text('Test'),
-                icon: const Icon(Icons.dialpad_rounded),
+                label: const Text(AppStrings.view),
+                icon: const Icon(Icons.info),
                 onPressed: () => {
                       Get.to(() => NoteDetailPage(
                           title: noteModel.title,
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             child: TextButton.icon(
-              label: const Text('Edit'),
+              label: const Text(AppStrings.edit),
               icon: const Icon(Icons.edit),
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             child: TextButton.icon(
-              label: const Text('Delete'),
+              label: const Text(AppStrings.delete),
               icon: const Icon(Icons.delete),
               onPressed: () => {
                 //confirmDialog(context, noteModel)
