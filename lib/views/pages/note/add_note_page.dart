@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:note_taking_app/constants/app_strings.dart';
 import 'package:note_taking_app/model/note/note_model.dart';
 import 'package:note_taking_app/utils/box.dart';
+import 'package:note_taking_app/views/pages/dashboard/dashboard_page.dart';
 import 'package:note_taking_app/views/widgets/button/round_button.dart';
 import 'package:note_taking_app/views/widgets/error/error_widget.dart';
 import 'package:note_taking_app/views/widgets/spacing/vertical_spacing_widget.dart';
@@ -94,6 +95,7 @@ class AddNotePage extends StatelessWidget {
                             isLoading.value = true;
                             addNote(titleController.text.trim(),
                                 descriptionController.text.trim());
+                            Get.offAll(() => DashboardPage());
                           }
                         },
                         childText: AppStrings.save,
