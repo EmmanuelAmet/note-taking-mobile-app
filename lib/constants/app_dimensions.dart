@@ -7,6 +7,8 @@ class AppDimensions {
   static const header4FontSize = 16.0;
   static const header5FontSize = 14.0;
   static const header6FontSize = 12.0;
+  static const containerMargin = 20.0;
+  static const padding1 = 10.0;
 
   static const minimumPasswordLength = 8;
 }

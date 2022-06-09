@@ -6,6 +6,7 @@ import 'package:note_taking_app/utils/box.dart';
 import 'package:note_taking_app/views/widgets/button/round_button.dart';
 import 'package:note_taking_app/views/widgets/error/error_widget.dart';
 import 'package:note_taking_app/views/widgets/spacing/vertical_spacing_widget.dart';
+import 'package:note_taking_app/views/widgets/text/text_bold.dart';
 
 import '../../../constants/app_dimensions.dart';
 
@@ -35,17 +36,11 @@ class AddNotePage extends StatelessWidget {
                   children: [
                     ErrorMessage(
                         visibility: isErrorVisible, message: errorMessage),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                      child: Text(
-                        AppStrings.title,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                    const TextBoldTile(text: AppStrings.title),
                     Obx(() => TextField(
                         enabled: isLoading.isTrue ? false : true,
                         controller: titleController,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.normal),
                         enableInteractiveSelection: true,
                         toolbarOptions: const ToolbarOptions(
                             copy: true,
@@ -56,7 +51,7 @@ class AddNotePage extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: AppStrings.enterNoteTitle,
                           hintStyle: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
                             fontStyle: FontStyle.normal,
                           ),
                           enabledBorder: inputBorder(),
@@ -64,18 +59,12 @@ class AddNotePage extends StatelessWidget {
                           border: inputBorder(),
                         ))),
                     const VerticalSpacing(),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10.0),
-                      child: Text(
-                        AppStrings.description,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                    const TextBoldTile(text: AppStrings.description),
                     Obx(() => TextField(
                         enabled: isLoading.isTrue ? false : true,
                         maxLines: null,
                         controller: descriptionController,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.normal),
                         enableInteractiveSelection: true,
                         toolbarOptions: const ToolbarOptions(
                             copy: true,
@@ -86,7 +75,7 @@ class AddNotePage extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: AppStrings.enterNoteDescription,
                           hintStyle: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
                             fontStyle: FontStyle.normal,
                           ),
                           enabledBorder: inputBorder(),
@@ -103,6 +92,8 @@ class AddNotePage extends StatelessWidget {
                           } else {
                             isErrorVisible.value = false;
                             isLoading.value = true;
+                            addNote(titleController.text.trim(),
+                                descriptionController.text.trim());
                           }
                         },
                         childText: AppStrings.save,
@@ -131,7 +122,7 @@ class AddNotePage extends StatelessWidget {
       ..createdDate = DateTime.now()
       ..description = description;
 
-    final box = Boxes.getBoxNot();
+    final box = Boxes.getBoxNote();
     box.add(note);
   }
 }

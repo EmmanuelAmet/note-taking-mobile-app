@@ -26,8 +26,8 @@ class RoundButton extends StatelessWidget {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              AppColors.orange1,
-              AppColors.orange2,
+              AppColors.blue,
+              Colors.lightBlue,
             ],
           ),
         ),
