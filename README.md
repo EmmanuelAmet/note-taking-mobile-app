@@ -1,5 +1,5 @@
 # Note Keeping App 
-### Offline & Clod Support Provided.
+### Offline & Cloud Support Provided.
 This is a note keeking that helps users to organized their notes with both offline and cloud support.
 
 
