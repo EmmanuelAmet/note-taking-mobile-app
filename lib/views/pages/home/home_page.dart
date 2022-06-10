@@ -13,9 +13,8 @@ import 'package:note_taking_app/constants/app_strings.dart';
 import 'package:note_taking_app/controllers/home/home_controller.dart';
 import 'package:note_taking_app/model/note/note_model.dart';
 import 'package:note_taking_app/views/pages/detail/note_detail_page.dart';
-import 'package:note_taking_app/views/pages/home/search_widget.dart';
+import 'package:note_taking_app/views/pages/home/widgets/search_widget.dart';
 import 'package:note_taking_app/views/pages/note/add_note_page.dart';
-import 'package:note_taking_app/views/widgets/spacing/vertical_spacing_widget.dart';
 
 import '../../../utils/box.dart';
 import '../../../utils/helper.dart';
@@ -56,7 +55,18 @@ class _HomePageState extends State<HomePage> {
               }),
           IconButton(
             onPressed: () async {
-              widget._homeController.uploadNoteToCloud('THis is a sample app.');
+              AwesomeDialog(
+                context: context,
+                dialogType: DialogType.QUESTION,
+                animType: AnimType.BOTTOMSLIDE,
+                title: AppStrings.confirm,
+                desc: AppStrings.uploadToCloud,
+                btnCancelOnPress: () {},
+                btnOkOnPress: () async {
+                  widget._homeController
+                      .uploadNoteToCloud('THis is a sample app.');
+                },
+              )..show();
             },
             icon: Icon(CupertinoIcons.cloud_upload),
             color: AppColors.white,
@@ -96,7 +106,6 @@ class _HomePageState extends State<HomePage> {
     } else {
       return Column(
         children: [
-          const VerticalSpacing(),
           Expanded(
             child: ListView.builder(
               shrinkWrap: true,

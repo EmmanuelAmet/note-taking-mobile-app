@@ -8,9 +8,9 @@ import 'package:note_taking_app/model/note/note_model.dart';
 import 'package:note_taking_app/views/widgets/text/text_bold.dart';
 import 'package:note_taking_app/views/widgets/text/text_normal.dart';
 
-import '../../../constants/app_assets.dart';
-import '../../../utils/box.dart';
-import '../detail/note_detail_page.dart';
+import '../../../../constants/app_assets.dart';
+import '../../../../utils/box.dart';
+import '../../detail/note_detail_page.dart';
 
 class SearchWidget extends SearchDelegate<NoteModel> {
   @override

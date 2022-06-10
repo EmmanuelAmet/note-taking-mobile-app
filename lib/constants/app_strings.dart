@@ -19,6 +19,8 @@ class AppStrings {
   static const yes = 'Yes';
   static const cancel = 'Cancel';
   static const editNote = 'Edit Note';
+  static const uploadToCloud =
+      'Are you sure you want to upload notes to your Google Drive?';
   static const noteDeletedSuccessful = 'Note deleted successful';
   static const areYouSureYouWantToDelete =
       'Are you sure you want to delete this note?';

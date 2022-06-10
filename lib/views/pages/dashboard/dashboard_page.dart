@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:note_taking_app/constants/app_strings.dart';
-import 'package:note_taking_app/views/pages/home/home_apge.dart';
+import 'package:note_taking_app/views/pages/home/home_page.dart';
 import 'package:note_taking_app/views/pages/note/add_note_page.dart';
 
 class DashboardPage extends StatefulWidget {
