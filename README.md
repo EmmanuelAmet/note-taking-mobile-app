@@ -2,6 +2,9 @@
 
 This is a note keeking that helps users to organized their notes with both offline and cloud support.
 
+
+![Screenshot](20220610_144144.gif)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
