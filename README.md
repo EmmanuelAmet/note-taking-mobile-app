@@ -1,5 +1,5 @@
-# Note Keeping App
-
+# Note Keeping App 
+### Offline & Clod Support Provided.
 This is a note keeking that helps users to organized their notes with both offline and cloud support.
 
 
@@ -21,9 +21,10 @@ This project is a starting point for a Flutter application.
       - Sync/upload notes with your Google account.
       - Share notes with friends via email, whatsApp, Facebook, Telegram, etc.
       
-### Extra:
-    User validation implemented | Note title: Required
-    Internet connectivity implemented to ensure users are connected to internet before syncing notes with their Google Account.
+## Extra:
+    1. Automatically check for new update of the app in production (users will just tap update to install the new update)
+    2. User validation implemented | Note title: Required
+    3. Internet connectivity implemented to ensure users are connected to internet before syncing notes with their Google Account.
 
 ### To use this project:
     1. Clone the project.
