@@ -58,7 +58,7 @@ class _NoteEditDialogState extends State<NoteEditDialog> {
               const SizedBox(height: 8),
               buildCallbackEndpoint(),
               const SizedBox(height: 8),
-              buildAmount(),
+              buildNoteDescription(),
               const SizedBox(height: 8),
             ],
           ),
@@ -81,12 +81,13 @@ class _NoteEditDialogState extends State<NoteEditDialog> {
             name != null && name.isEmpty ? AppStrings.enterNoteTitle : null,
       );
 
-  Widget buildAmount() => TextFormField(
+  Widget buildNoteDescription() => TextFormField(
+        maxLines: null,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),
           hintText: AppStrings.enterNoteDescription,
         ),
-        keyboardType: TextInputType.number,
+        keyboardType: TextInputType.multiline,
         controller: descriptionController,
       );
 
