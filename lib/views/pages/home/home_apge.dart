@@ -1,6 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hive/hive.dart';
@@ -8,6 +8,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:note_taking_app/constants/app_assets.dart';
+import 'package:note_taking_app/constants/app_colors.dart';
 import 'package:note_taking_app/constants/app_strings.dart';
 import 'package:note_taking_app/model/note/note_model.dart';
 import 'package:note_taking_app/views/pages/detail/note_detail_page.dart';
@@ -19,6 +20,7 @@ import '../note/edit_note_dialog.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
+  final _helper = Get.put(Helper());
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -108,11 +110,6 @@ class _HomePageState extends State<HomePage> {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              description,
-              style:
-                  const TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
-            ),
             Text(date),
           ],
         ),
@@ -127,8 +124,14 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
             child: TextButton.icon(
-                label: const Text(AppStrings.view),
-                icon: const Icon(Icons.info),
+                label: const Text(
+                  AppStrings.view,
+                  style: TextStyle(color: AppColors.green),
+                ),
+                icon: const Icon(
+                  CupertinoIcons.info,
+                  color: AppColors.green,
+                ),
                 onPressed: () => {
                       Get.to(() => NoteDetailPage(
                           title: noteModel.title,
@@ -153,13 +156,19 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             child: TextButton.icon(
-              label: const Text(AppStrings.delete),
-              icon: const Icon(Icons.delete),
+              label: const Text(
+                AppStrings.delete,
+                style: TextStyle(color: AppColors.red),
+              ),
+              icon: const Icon(
+                CupertinoIcons.delete,
+                color: AppColors.red,
+              ),
               onPressed: () => {
                 //confirmDialog(context, noteModel)
                 AwesomeDialog(
                   context: context,
-                  dialogType: DialogType.INFO,
+                  dialogType: DialogType.QUESTION,
                   animType: AnimType.BOTTOMSLIDE,
                   title: AppStrings.confirm,
                   desc: AppStrings.areYouSureYouWantToDelete,
@@ -167,6 +176,8 @@ class _HomePageState extends State<HomePage> {
                   btnOkOnPress: () async {
                     //Delete note
                     await deleteNote(noteModel);
+                    widget._helper
+                        .showToastMassage(AppStrings.noteDeletedSuccessful);
                   },
                 )..show()
               },
@@ -187,38 +198,5 @@ class _HomePageState extends State<HomePage> {
 
   deleteNote(NoteModel noteModel) {
     noteModel.delete();
-  }
-
-  Future<String?> confirmDialog(BuildContext context, NoteModel noteModel) {
-    final Helper _helper = Get.put(Helper());
-    return showDialog<String>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title: const Text(AppStrings.confirm),
-        content: const Text(AppStrings.areYouSureYouWantToDelete),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () => Get.back(),
-            child: const Text(
-              AppStrings.no,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          TextButton(
-            onPressed: () async {
-              SmartDialog.showLoading();
-              await deleteNote(noteModel);
-              await _helper.showToastMassage(AppStrings.noteDeletedSuccessful);
-              SmartDialog.dismiss();
-              Get.back();
-            },
-            child: const Text(
-              AppStrings.yes,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }

@@ -8,7 +8,10 @@ class AppStrings {
   static const save = 'Save';
   static const confirm = 'Confirm';
   static const no = 'No';
-  static const view = 'View';
+  static const start = 'Start';
+  static const next = 'Next';
+  static const skip = 'Skip';
+  static const view = 'View note';
   static const edit = 'Edit';
   static const delete = 'Delete';
   static const yes = 'Yes';
@@ -24,4 +27,15 @@ class AppStrings {
 
   //Box name
   static const hiveBoxName = 'note';
+
+  //Shared preference
+  static const onBoardingPref = 'onBoarding';
+
+  //User on boarding
+  static const titleOne = appName;
+  static const titleTwo = 'Save & Upload';
+  static const titleThree = 'Share Notes';
+  static const descriptionOne = 'So easy to keep and organise your notes.';
+  static const descriptionTwo = 'Save and upload your notes to the cloud.';
+  static const descriptionThree = 'Share notes with others.';
 }
