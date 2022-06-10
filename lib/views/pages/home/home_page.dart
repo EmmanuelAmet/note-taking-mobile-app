@@ -63,8 +63,7 @@ class _HomePageState extends State<HomePage> {
                 desc: AppStrings.uploadToCloud,
                 btnCancelOnPress: () {},
                 btnOkOnPress: () async {
-                  widget._homeController
-                      .uploadNoteToCloud('THis is a sample app.');
+                  widget._homeController.uploadNoteToCloud();
                 },
               )..show();
             },
