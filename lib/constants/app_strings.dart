@@ -8,6 +8,7 @@ class AppStrings {
   static const save = 'Save';
   static const confirm = 'Confirm';
   static const no = 'No';
+  static const search = 'Search here...';
   static const share = 'Share';
   static const start = 'Start';
   static const next = 'Next';

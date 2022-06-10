@@ -13,7 +13,9 @@ import 'package:note_taking_app/constants/app_strings.dart';
 import 'package:note_taking_app/controllers/home/home_controller.dart';
 import 'package:note_taking_app/model/note/note_model.dart';
 import 'package:note_taking_app/views/pages/detail/note_detail_page.dart';
+import 'package:note_taking_app/views/pages/home/search_widget.dart';
 import 'package:note_taking_app/views/pages/note/add_note_page.dart';
+import 'package:note_taking_app/views/widgets/spacing/vertical_spacing_widget.dart';
 
 import '../../../utils/box.dart';
 import '../../../utils/helper.dart';
@@ -30,6 +32,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var myNotes = [];
+
   @override
   void dispose() {
     Hive.box(AppStrings.hiveBoxName).close();
@@ -43,10 +47,20 @@ class _HomePageState extends State<HomePage> {
         title: const Text(AppStrings.appName),
         actions: [
           IconButton(
-            onPressed: () async {},
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: SearchWidget(),
+                );
+              }),
+          IconButton(
+            onPressed: () async {
+              widget._homeController.uploadNoteToCloud('THis is a sample app.');
+            },
             icon: Icon(CupertinoIcons.cloud_upload),
             color: AppColors.white,
-          )
+          ),
         ],
       ),
       body: Container(
@@ -82,7 +96,7 @@ class _HomePageState extends State<HomePage> {
     } else {
       return Column(
         children: [
-          const SizedBox(height: 10),
+          const VerticalSpacing(),
           Expanded(
             child: ListView.builder(
               shrinkWrap: true,
@@ -91,7 +105,8 @@ class _HomePageState extends State<HomePage> {
               itemCount: noteModel.length,
               itemBuilder: (BuildContext context, int index) {
                 final note = noteModel.reversed.toList()[index];
-                print('Notes: ${note.title}');
+                myNotes.add('${note.title} \n${note.description}');
+                print('Notes: ${myNotes}');
                 return buildUssdDetail(context, note);
               },
             ),

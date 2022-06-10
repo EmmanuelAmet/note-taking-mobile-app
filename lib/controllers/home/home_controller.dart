@@ -27,7 +27,35 @@ class HomeController extends GetxController {
   }
 
   //***** Uploading note to Google Drive
-  uploadNoteToCloud() async {
+  uploadNoteToCloud(note) async {
+    //Checking user internet status before uploading notes
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      //***** This wil attempts to login using previously authenticated account without any user interactio
+      final googleSignIn =
+          signIn.GoogleSignIn.standard(scopes: [drive.DriveApi.driveScope]);
+      final signIn.GoogleSignInAccount? account = await googleSignIn.signIn();
+      print("User account: $account");
+
+      final authHeaders = await account?.authHeaders;
+      final authenticateClient = GoogleAuthClient(authHeaders!);
+      final driveApi = drive.DriveApi(authenticateClient);
+
+      final Stream<List<int>> mediaStream =
+          Future.value([1104, 105]).asStream();
+      var media = new drive.Media(mediaStream, 2);
+      var driveFile = new drive.File();
+      driveFile.name = "notebook.pdf";
+      final result = await driveApi.files.create(driveFile, uploadMedia: media);
+      print("Upload result: ${result.name}");
+    } else {
+      _helper.showToastMassage(AppStrings.noInternetConnectivityAvailable);
+    }
+  }
+
+  /*
+   uploadNoteToCloud() async {
     //Checking user internet status before uploading notes
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
@@ -51,4 +79,5 @@ class HomeController extends GetxController {
       _helper.showToastMassage(AppStrings.noInternetConnectivityAvailable);
     }
   }
+   */
 }
