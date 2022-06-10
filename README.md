@@ -20,6 +20,11 @@ This project is a starting point for a Flutter application.
     User validation implemented | Note title: Required
     Internet connectivity implemented to ensure users are connected to internet before syncing notes with their Google Account.
 
+### To use this project:
+    1. Clone the project.
+    2. Add the project to firebase.
+    3. Replace google_services.json file located in the app level.
+  
 ### Flutter packages used:
     cupertino_icons: ^1.0.2
     hive: ^2.2.1
