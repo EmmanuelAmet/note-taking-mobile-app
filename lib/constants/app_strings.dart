@@ -10,6 +10,9 @@ class AppStrings {
   static const no = 'No';
   static const search = 'Search here...';
   static const share = 'Share';
+  static const update = 'Update';
+  static const updateAppToContinue = 'Update app to continue';
+  static const newUpdateAvailable = 'New Update Available';
   static const start = 'Start';
   static const next = 'Next';
   static const skip = 'Skip';
