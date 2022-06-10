@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "675796517738",
+    "project_id": "notebook-df431",
+    "storage_bucket": "notebook-df431.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675796517738:android:755ccd7f350da07f775b13",
+        "android_client_info": {
+          "package_name": "com.awesome.notebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675796517738-vttc6p19pumapk11mnlvb6l34n2tdgl0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.awesome.notebook",
+            "certificate_hash": "ed1d68d67c7745da6f0465503fc6360a1272bd3d"
+          }
+        },
+        {
+          "client_id": "675796517738-cu67tkkeepa8arec2l9sacqj37bf2hi5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-6zECEbmuUMH5K7H0684XiNfam6oGNPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "675796517738-cu67tkkeepa8arec2l9sacqj37bf2hi5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

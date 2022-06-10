@@ -1,4 +1,4 @@
-package com.example.note_taking_app
+package com.awesome.notebook
 
 import io.flutter.embedding.android.FlutterActivity
 
