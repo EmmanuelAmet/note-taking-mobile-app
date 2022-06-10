@@ -25,6 +25,8 @@ class AppStrings {
   static const titleFieldRequired = 'Title field required';
   static const enterNoteTitle = 'Enter note title here';
   static const enterNoteDescription = 'Enter note description here...';
+  static const noInternetConnectivityAvailable =
+      'You are not connected to internet, ensure you\'re connected before uploading your notes.';
 
   //Box name
   static const hiveBoxName = 'note';

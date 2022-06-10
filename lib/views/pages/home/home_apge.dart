@@ -41,6 +41,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.appName),
+        actions: [
+          IconButton(
+            onPressed: () async {},
+            icon: Icon(CupertinoIcons.cloud_upload),
+            color: AppColors.white,
+          )
+        ],
       ),
       body: Container(
         child: ValueListenableBuilder<Box<NoteModel>>(
@@ -54,8 +61,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildContent(List<NoteModel> ussdModel) {
-    if (ussdModel.isEmpty) {
+  Widget buildContent(List<NoteModel> noteModel) {
+    if (noteModel.isEmpty) {
       return Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -81,10 +88,11 @@ class _HomePageState extends State<HomePage> {
               shrinkWrap: true,
               addAutomaticKeepAlives: true,
               padding: const EdgeInsets.all(8),
-              itemCount: ussdModel.length,
+              itemCount: noteModel.length,
               itemBuilder: (BuildContext context, int index) {
-                final ussd = ussdModel.reversed.toList()[index];
-                return buildUssdDetail(context, ussd);
+                final note = noteModel.reversed.toList()[index];
+                print('Notes: ${note.title}');
+                return buildUssdDetail(context, note);
               },
             ),
           ),
