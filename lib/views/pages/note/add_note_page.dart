@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:note_taking_app/constants/app_strings.dart';
-import 'package:note_taking_app/model/note/note_model.dart';
-import 'package:note_taking_app/utils/box.dart';
+import 'package:note_taking_app/controllers/addnote/add_note_controller.dart';
 import 'package:note_taking_app/views/pages/dashboard/dashboard_page.dart';
 import 'package:note_taking_app/views/widgets/button/round_button.dart';
 import 'package:note_taking_app/views/widgets/error/error_widget.dart';
@@ -13,6 +12,9 @@ import '../../../constants/app_dimensions.dart';
 
 class AddNotePage extends StatelessWidget {
   AddNotePage({Key? key}) : super(key: key);
+  //***** Dependency Injection
+  final _addNoteController = Get.put(AddNoteController());
+
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
@@ -93,7 +95,8 @@ class AddNotePage extends StatelessWidget {
                           } else {
                             isErrorVisible.value = false;
                             isLoading.value = true;
-                            addNote(titleController.text.trim(),
+                            _addNoteController.addNote(
+                                titleController.text.trim(),
                                 descriptionController.text.trim());
                             Get.offAll(() => DashboardPage());
                           }
@@ -116,15 +119,5 @@ class AddNotePage extends StatelessWidget {
           color: Colors.grey,
           width: AppDimensions.textFieldBorderWidth,
         ));
-  }
-
-  Future addNote(String title, String description) async {
-    final note = NoteModel()
-      ..title = title
-      ..createdDate = DateTime.now()
-      ..description = description;
-
-    final box = Boxes.getBoxNote();
-    box.add(note);
   }
 }

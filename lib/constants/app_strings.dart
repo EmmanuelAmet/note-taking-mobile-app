@@ -8,10 +8,11 @@ class AppStrings {
   static const save = 'Save';
   static const confirm = 'Confirm';
   static const no = 'No';
+  static const share = 'Share';
   static const start = 'Start';
   static const next = 'Next';
   static const skip = 'Skip';
-  static const view = 'View note';
+  static const read = 'Read';
   static const edit = 'Edit';
   static const delete = 'Delete';
   static const yes = 'Yes';

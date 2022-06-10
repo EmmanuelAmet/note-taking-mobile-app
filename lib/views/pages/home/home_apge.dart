@@ -10,17 +10,20 @@ import 'package:lottie/lottie.dart';
 import 'package:note_taking_app/constants/app_assets.dart';
 import 'package:note_taking_app/constants/app_colors.dart';
 import 'package:note_taking_app/constants/app_strings.dart';
+import 'package:note_taking_app/controllers/home/home_controller.dart';
 import 'package:note_taking_app/model/note/note_model.dart';
 import 'package:note_taking_app/views/pages/detail/note_detail_page.dart';
 import 'package:note_taking_app/views/pages/note/add_note_page.dart';
 
 import '../../../utils/box.dart';
-import '../../../utils/help.dart';
+import '../../../utils/helper.dart';
 import '../note/edit_note_dialog.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
+  //***** Dependency Injection
   final _helper = Get.put(Helper());
+  final _homeController = Get.put(HomeController());
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -43,8 +46,8 @@ class _HomePageState extends State<HomePage> {
         child: ValueListenableBuilder<Box<NoteModel>>(
           valueListenable: Boxes.getBoxNote().listenable(),
           builder: (context, box, _) {
-            final transactions = box.values.toList().cast<NoteModel>();
-            return buildContent(transactions);
+            final notes = box.values.toList().cast<NoteModel>();
+            return buildContent(notes);
           },
         ),
       ),
@@ -125,7 +128,7 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: TextButton.icon(
                 label: const Text(
-                  AppStrings.view,
+                  AppStrings.read,
                   style: TextStyle(color: AppColors.green),
                 ),
                 icon: const Icon(
@@ -147,12 +150,28 @@ class _HomePageState extends State<HomePage> {
                 MaterialPageRoute(
                   builder: (context) => NoteEditDialog(
                     noteModel: noteModel,
-                    onClickedDone: (title, description) =>
-                        noteEditDialog(noteModel, title, description),
+                    onClickedDone: (title, description) => widget
+                        ._homeController
+                        .noteEditDialog(noteModel, title, description),
                   ),
                 ),
               ),
             ),
+          ),
+          Expanded(
+            child: TextButton.icon(
+                label: const Text(
+                  AppStrings.share,
+                  style: TextStyle(color: AppColors.gray),
+                ),
+                icon: const Icon(
+                  Icons.share,
+                  color: AppColors.gray,
+                ),
+                onPressed: () {
+                  widget._helper
+                      .shareNote(noteModel.title, noteModel.description);
+                }),
           ),
           Expanded(
             child: TextButton.icon(
@@ -175,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                   btnCancelOnPress: () {},
                   btnOkOnPress: () async {
                     //Delete note
-                    await deleteNote(noteModel);
+                    await widget._homeController.deleteNote(noteModel);
                     widget._helper
                         .showToastMassage(AppStrings.noteDeletedSuccessful);
                   },
@@ -185,18 +204,4 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       );
-
-  void noteEditDialog(
-    NoteModel noteModel,
-    String title,
-    String description,
-  ) {
-    noteModel.title = title;
-    noteModel.description = description;
-    noteModel.save();
-  }
-
-  deleteNote(NoteModel noteModel) {
-    noteModel.delete();
-  }
 }
