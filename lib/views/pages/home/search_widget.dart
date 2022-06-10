@@ -61,7 +61,9 @@ class SearchFinder extends StatelessWidget {
         var results = query.isEmpty
             ? contactsBox.values.toList()
             : contactsBox.values
-                .where((c) => c.title.toLowerCase().contains(query))
+                .where((c) =>
+                    c.title.toLowerCase().contains(query) ||
+                    c.createdDate.toString().toLowerCase().contains(query))
                 .toList();
 
         return results.isEmpty
