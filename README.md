@@ -61,7 +61,7 @@ This project is a starting point for a Flutter application.
     googleapis: ^9.1.0
     connectivity_plus: ^2.2.1
 
-### You need to create projects on the following platforms:
+### You need to add your project to the following platforms:
 
 - [Firebase](https://console.firebase.google.com)
 - [GCP: Google Cloud Platform](https://console.cloud.google.com)
