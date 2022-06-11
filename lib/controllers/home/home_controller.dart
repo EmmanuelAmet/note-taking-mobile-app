@@ -2,6 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart' as signIn;
 import 'package:googleapis/drive/v3.dart' as drive;
+import 'package:new_version/new_version.dart';
 import 'package:note_taking_app/constants/app_strings.dart';
 
 import '../../model/note/note_model.dart';
@@ -10,6 +11,27 @@ import '../../utils/helper.dart';
 
 class HomeController extends GetxController {
   final _helper = Get.put(Helper());
+
+  @override
+  void onInit() async {
+    //***** Automatically check for update (new version of the app)
+    final newVersion = NewVersion();
+    newVersion.showAlertIfNecessary(context: Get.context!);
+    final status = await newVersion.getVersionStatus();
+    if (status != null) {
+      newVersion.showUpdateDialog(
+          context: Get.context!,
+          versionStatus: status,
+          dialogTitle: AppStrings.newUpdateAvailable,
+          dialogText: AppStrings.updateAppToContinue,
+          allowDismissal: false,
+          updateButtonText: AppStrings.update,
+          dismissButtonText: AppStrings.cancel,
+          dismissAction: () {});
+    }
+    super.onInit();
+  }
+
   //***** Edit note
   void noteEditDialog(
     NoteModel noteModel,
