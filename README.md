@@ -4,6 +4,7 @@ This is a note keeking that helps users to organized their notes with both offli
 
 
 ![Screenshot](20220610_144144.gif)
+![Screenshot](20220611_123445.gif)
 ![Screenshot](Screenshot_20220610-135037.png)
 
 

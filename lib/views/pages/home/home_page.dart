@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
                   delegate: SearchWidget(),
                 );
               }),
+          /*
           IconButton(
             onPressed: () async {
               AwesomeDialog(
@@ -70,6 +71,7 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(CupertinoIcons.cloud_upload),
             color: AppColors.white,
           ),
+          */
         ],
       ),
       body: Container(
