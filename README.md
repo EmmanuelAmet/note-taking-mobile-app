@@ -32,6 +32,18 @@ This project is a starting point for a Flutter application.
     2. Add the project to firebase.
     3. Replace google_services.json file located in the app level.
   
+
+### How to generate SHA-1 for firebase project:
+#### Windows:
+    keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+
+#### Linux & MacOS:
+    keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android 
+
+#### Alternatively: move to the android directory and execute the code below:
+    gradlew signingreport
+
+
 ### Flutter packages used:
     cupertino_icons: ^1.0.2
     hive: ^2.2.1
