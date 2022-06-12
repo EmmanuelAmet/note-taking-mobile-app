@@ -2,7 +2,18 @@
 ### Offline & Cloud Support Provided.
 This is a note keeking that helps users to organized their notes with both offline and cloud support.
 
+### Services Used:
+    AWS: AWS Device Farm (for testing the app across an extensive range of real mobile devices in the cloud)
+    GCP: Google Drive API & Oauth
+    Google Firebase: Sgn-in with Google, Analytics, Crushlytic
+    Framework: Flutter
+    Programming Language: Dart
+    Datbase: Hive DB
 
+#### NB:
+    Google must verify your account after enabling the Oauth in GCP console which is a requirement for syncing your app with the user Google Drive 
+    
+    
 ![Screenshot](20220610_144144.gif)
 ![Screenshot](20220611_123445.gif)
 ![Screenshot](Screenshot_20220610-135037.png)
@@ -40,10 +51,10 @@ This project is a starting point for a Flutter application.
 #### Linux & MacOS:
     keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android 
 
+
 #### Alternatively: move to the android directory and execute the code below:
     gradlew signingreport
-
-
+    
 ### Flutter packages used:
     cupertino_icons: ^1.0.2
     hive: ^2.2.1
@@ -65,5 +76,4 @@ This project is a starting point for a Flutter application.
 
 - [Firebase](https://console.firebase.google.com)
 - [GCP: Google Cloud Platform](https://console.cloud.google.com)
-
-
+- [AWS: Amazon Web Service](https://aws.amazon.com/servicecatalog)
