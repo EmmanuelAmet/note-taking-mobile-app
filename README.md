@@ -30,9 +30,10 @@ This is a note keeking that helps users to organized their notes with both offli
       - Share notes with friends via email, whatsApp, Facebook, Telegram, etc.
       
 ## Extra:
-    1. Automatically check for new update of the app in production (users will just tap update to install the new update)
-    2. User validation implemented | Note title: Required
-    3. Internet connectivity implemented to ensure users are connected to internet before syncing notes with their Google Account.
+    1. Voice recorder implemented.
+    2. Automatically check for new update of the app in production (users will just tap update to install the new update)
+    3. User validation implemented | Note title: Required
+    4. Internet connectivity implemented to ensure users are connected to internet before syncing notes with their Google Account.
 
 ### To use this project:
     1. Clone the project.
