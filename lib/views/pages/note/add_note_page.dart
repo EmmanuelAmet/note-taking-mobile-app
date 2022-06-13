@@ -113,7 +113,6 @@ class AddNotePage extends StatelessWidget {
                               _addNoteController.listen();
                               descriptionController.text =
                                   _addNoteController.speechText.value;
-                              print(_addNoteController.speechText.value);
                             },
                           ),
                         ))),
