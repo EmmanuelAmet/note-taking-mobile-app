@@ -19,10 +19,6 @@ This is a note keeking that helps users to organized their notes with both offli
 ![Screenshot](Screenshot_20220610-135037.png)
 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
 ### Features of the app:
       - Add note.
       - View notes.
