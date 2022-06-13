@@ -6,6 +6,9 @@ import '../../model/note/note_model.dart';
 import '../../utils/box.dart';
 
 class AddNoteController extends GetxController {
+  var isSpeaking = false.obs;
+  var speechText = ''.obs;
+
   Future addNote(String title, String description) async {
     final note = NoteModel()
       ..title = title

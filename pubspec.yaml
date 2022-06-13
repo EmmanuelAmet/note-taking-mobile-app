@@ -49,6 +49,7 @@ dependencies:
   googleapis: ^9.1.0
   connectivity_plus: ^2.2.1
   new_version: ^0.3.1
+  avatar_glow: ^2.0.2
 
 dev_dependencies:
   flutter_test:

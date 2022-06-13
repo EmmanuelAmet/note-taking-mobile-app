@@ -1,3 +1,4 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:note_taking_app/constants/app_strings.dart';
@@ -23,6 +24,7 @@ class AddNotePage extends StatelessWidget {
     final isErrorVisible = false.obs;
     var isLoading = false.obs;
     var errorMessage = ''.obs;
+    var isSpeaking = false.obs;
 
     return Scaffold(
         appBar: AppBar(
@@ -84,6 +86,31 @@ class AddNotePage extends StatelessWidget {
                           enabledBorder: inputBorder(),
                           focusedBorder: inputBorder(),
                           border: inputBorder(),
+                          suffixIcon: IconButton(
+                            icon: isSpeaking.value
+                                ? AvatarGlow(
+                                    glowColor: Colors.blue,
+                                    endRadius: 90.0,
+                                    duration: Duration(milliseconds: 2000),
+                                    repeat: true,
+                                    showTwoGlows: true,
+                                    repeatPauseDuration:
+                                        Duration(milliseconds: 100),
+                                    child: Icon(
+                                      Icons.mic,
+                                    ),
+                                  )
+                                : Icon(
+                                    Icons.mic,
+                                  ),
+                            onPressed: () {
+                              isSpeaking.isTrue
+                                  ? isSpeaking.value = false
+                                  : isSpeaking.value = true;
+
+                              print('User password');
+                            },
+                          ),
                         ))),
                     const VerticalSpacing(),
                     RoundButton(
