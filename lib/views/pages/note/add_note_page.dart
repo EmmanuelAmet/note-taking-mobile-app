@@ -24,7 +24,6 @@ class AddNotePage extends StatelessWidget {
     final isErrorVisible = false.obs;
     var isLoading = false.obs;
     var errorMessage = ''.obs;
-    var isSpeaking = false.obs;
 
     return Scaffold(
         appBar: AppBar(
@@ -78,7 +77,9 @@ class AddNotePage extends StatelessWidget {
                             selectAll: true),
                         keyboardType: TextInputType.multiline,
                         decoration: InputDecoration(
-                          hintText: AppStrings.enterNoteDescription,
+                          hintText: _addNoteController.isSpeaking.isTrue
+                              ? AppStrings.youAreSpeaking
+                              : AppStrings.enterNoteDescription,
                           hintStyle: const TextStyle(
                             fontWeight: FontWeight.normal,
                             fontStyle: FontStyle.normal,
@@ -87,28 +88,32 @@ class AddNotePage extends StatelessWidget {
                           focusedBorder: inputBorder(),
                           border: inputBorder(),
                           suffixIcon: IconButton(
-                            icon: isSpeaking.value
-                                ? AvatarGlow(
-                                    glowColor: Colors.blue,
-                                    endRadius: 90.0,
-                                    duration: Duration(milliseconds: 2000),
-                                    repeat: true,
-                                    showTwoGlows: true,
-                                    repeatPauseDuration:
-                                        Duration(milliseconds: 100),
-                                    child: Icon(
-                                      Icons.mic,
-                                    ),
-                                  )
+                            icon: _addNoteController.isSpeaking.value
+                                ? Obx(() => AvatarGlow(
+                                      animate:
+                                          _addNoteController.isSpeaking.value,
+                                      glowColor: Colors.blue,
+                                      endRadius: 90.0,
+                                      duration: Duration(milliseconds: 2000),
+                                      repeat: true,
+                                      showTwoGlows: true,
+                                      repeatPauseDuration:
+                                          Duration(milliseconds: 100),
+                                      child: Icon(
+                                        Icons.mic,
+                                      ),
+                                    ))
                                 : Icon(
                                     Icons.mic,
                                   ),
                             onPressed: () {
-                              isSpeaking.isTrue
-                                  ? isSpeaking.value = false
-                                  : isSpeaking.value = true;
-
-                              print('User password');
+                              _addNoteController.isSpeaking.isTrue
+                                  ? _addNoteController.isSpeaking.value = false
+                                  : _addNoteController.isSpeaking.value = true;
+                              _addNoteController.listen();
+                              descriptionController.text =
+                                  _addNoteController.speechText.value;
+                              print(_addNoteController.speechText.value);
                             },
                           ),
                         ))),
